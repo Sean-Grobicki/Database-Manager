@@ -50,11 +50,12 @@ namespace Database_Manager
             // 
             // projectBox
             // 
+            this.projectBox.BackColor = System.Drawing.Color.White;
             this.projectBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.projectBox.FormattingEnabled = true;
             this.projectBox.ItemHeight = 17;
             this.projectBox.Location = new System.Drawing.Point(80, 46);
-            this.projectBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.projectBox.Margin = new System.Windows.Forms.Padding(4);
             this.projectBox.Name = "projectBox";
             this.projectBox.Size = new System.Drawing.Size(257, 395);
             this.projectBox.TabIndex = 0;
@@ -138,6 +139,7 @@ namespace Database_Manager
             // 
             // descriptionTextBox
             // 
+            this.descriptionTextBox.BackColor = System.Drawing.Color.White;
             this.descriptionTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descriptionTextBox.Location = new System.Drawing.Point(443, 218);
             this.descriptionTextBox.Name = "descriptionTextBox";
@@ -147,6 +149,7 @@ namespace Database_Manager
             // 
             // titleBox
             // 
+            this.titleBox.BackColor = System.Drawing.Color.White;
             this.titleBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleBox.Location = new System.Drawing.Point(522, 38);
             this.titleBox.Name = "titleBox";
@@ -155,6 +158,7 @@ namespace Database_Manager
             // 
             // typeBox
             // 
+            this.typeBox.BackColor = System.Drawing.Color.White;
             this.typeBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.typeBox.Location = new System.Drawing.Point(522, 93);
             this.typeBox.Name = "typeBox";
@@ -163,6 +167,7 @@ namespace Database_Manager
             // 
             // languageBox
             // 
+            this.languageBox.BackColor = System.Drawing.Color.White;
             this.languageBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.languageBox.Location = new System.Drawing.Point(522, 144);
             this.languageBox.Name = "languageBox";
@@ -171,6 +176,7 @@ namespace Database_Manager
             // 
             // linksBox
             // 
+            this.linksBox.BackColor = System.Drawing.Color.White;
             this.linksBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linksBox.FormattingEnabled = true;
             this.linksBox.ItemHeight = 17;
@@ -238,11 +244,10 @@ namespace Database_Manager
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DBManager";
             this.Text = "Database Manager";
-            this.TransparencyKey = System.Drawing.Color.Transparent;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.TransparencyKey = System.Drawing.SystemColors.Window;
             this.Load += new System.EventHandler(this.DBManager_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

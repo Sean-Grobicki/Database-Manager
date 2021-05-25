@@ -14,7 +14,7 @@ namespace Database_Manager
         private string _type;
         private string _description;
         private string _language;
-        private List<Link> _links;
+        private List<Link> _links = new List<Link>();
 
         public Project(string title, string type, string description, string language)
         {
