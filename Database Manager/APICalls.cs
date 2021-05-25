@@ -12,31 +12,38 @@ namespace Database_Manager
 {
     class APICalls
     {
-        HttpClient client = new HttpClient();
+        HttpClient _client = new HttpClient();
+        private string _serverAddress = $"https://sean-grobicki-portfolio.vercel.app/api";
 
         public async Task<HttpStatusCode> addProject(Project project)
         {
-            
+            HttpResponseMessage response = await _client.PostAsync(_serverAddress + "/project",);
+            response.EnsureSuccessStatusCode();
+            return response.StatusCode;
         }
 
         public async Task<HttpStatusCode> updateProject(Project project)
-        { 
-        
+        {
+           
         }
 
         public async Task<HttpStatusCode> deleteProject(Project project)
-        { 
-        
+        {
+            HttpResponseMessage response = await _client.DeleteAsync(_serverAddress + "/project/"+project.Id);
+            response.EnsureSuccessStatusCode();
+            return response.StatusCode;
         }
 
-        public async Task<Uri> getAllProjects()
+        public async Task<List<Project>> getAllProjects()
         { 
-        
+            
         }
 
-        public async Task<Uri> getProject(int id)
-        { 
-        
+        public async Task<Project> getProject(int id)
+        {
+            HttpResponseMessage response = await _client.GetAsync(_serverAddress + "/project/" + id);
+            response.EnsureSuccessStatusCode();
+
         }
     }
 }
