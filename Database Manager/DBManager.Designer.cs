@@ -50,15 +50,17 @@ namespace Database_Manager
             // 
             // projectBox
             // 
-            this.projectBox.BackColor = System.Drawing.Color.White;
+            this.projectBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.projectBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.projectBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.projectBox.FormattingEnabled = true;
             this.projectBox.ItemHeight = 17;
             this.projectBox.Location = new System.Drawing.Point(80, 46);
             this.projectBox.Margin = new System.Windows.Forms.Padding(4);
             this.projectBox.Name = "projectBox";
-            this.projectBox.Size = new System.Drawing.Size(257, 395);
+            this.projectBox.Size = new System.Drawing.Size(257, 393);
             this.projectBox.TabIndex = 0;
+            this.projectBox.SelectedIndexChanged += new System.EventHandler(this.projectBox_SelectedIndexChanged);
             // 
             // updateButton
             // 
@@ -84,6 +86,7 @@ namespace Database_Manager
             this.deleteButton.TabIndex = 2;
             this.deleteButton.Text = "Delete Project";
             this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // addButton
             // 
@@ -96,6 +99,7 @@ namespace Database_Manager
             this.addButton.TabIndex = 3;
             this.addButton.Text = "Add New Project";
             this.addButton.UseVisualStyleBackColor = false;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // titleLabel
             // 
@@ -139,7 +143,8 @@ namespace Database_Manager
             // 
             // descriptionTextBox
             // 
-            this.descriptionTextBox.BackColor = System.Drawing.Color.White;
+            this.descriptionTextBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.descriptionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.descriptionTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descriptionTextBox.Location = new System.Drawing.Point(443, 218);
             this.descriptionTextBox.Name = "descriptionTextBox";
@@ -149,7 +154,8 @@ namespace Database_Manager
             // 
             // titleBox
             // 
-            this.titleBox.BackColor = System.Drawing.Color.White;
+            this.titleBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.titleBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.titleBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleBox.Location = new System.Drawing.Point(522, 38);
             this.titleBox.Name = "titleBox";
@@ -158,7 +164,8 @@ namespace Database_Manager
             // 
             // typeBox
             // 
-            this.typeBox.BackColor = System.Drawing.Color.White;
+            this.typeBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.typeBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.typeBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.typeBox.Location = new System.Drawing.Point(522, 93);
             this.typeBox.Name = "typeBox";
@@ -167,7 +174,8 @@ namespace Database_Manager
             // 
             // languageBox
             // 
-            this.languageBox.BackColor = System.Drawing.Color.White;
+            this.languageBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.languageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.languageBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.languageBox.Location = new System.Drawing.Point(522, 144);
             this.languageBox.Name = "languageBox";
@@ -176,13 +184,14 @@ namespace Database_Manager
             // 
             // linksBox
             // 
-            this.linksBox.BackColor = System.Drawing.Color.White;
+            this.linksBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.linksBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.linksBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linksBox.FormattingEnabled = true;
             this.linksBox.ItemHeight = 17;
             this.linksBox.Location = new System.Drawing.Point(443, 345);
             this.linksBox.Name = "linksBox";
-            this.linksBox.Size = new System.Drawing.Size(385, 106);
+            this.linksBox.Size = new System.Drawing.Size(385, 104);
             this.linksBox.TabIndex = 12;
             // 
             // linksLabel
@@ -206,6 +215,7 @@ namespace Database_Manager
             this.linkChangeButton.TabIndex = 14;
             this.linkChangeButton.Text = "Change Link";
             this.linkChangeButton.UseVisualStyleBackColor = false;
+            this.linkChangeButton.Click += new System.EventHandler(this.linkChangeButton_Click);
             // 
             // addLinkButton
             // 
@@ -218,6 +228,7 @@ namespace Database_Manager
             this.addLinkButton.TabIndex = 15;
             this.addLinkButton.Text = "Add Link";
             this.addLinkButton.UseVisualStyleBackColor = false;
+            this.addLinkButton.Click += new System.EventHandler(this.addLinkButton_Click);
             // 
             // DBManager
             // 
@@ -225,6 +236,7 @@ namespace Database_Manager
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(175)))));
             this.ClientSize = new System.Drawing.Size(951, 592);
+            this.Controls.Add(this.projectBox);
             this.Controls.Add(this.addLinkButton);
             this.Controls.Add(this.linkChangeButton);
             this.Controls.Add(this.linksLabel);
@@ -240,7 +252,6 @@ namespace Database_Manager
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.updateButton);
-            this.Controls.Add(this.projectBox);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

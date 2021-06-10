@@ -31,6 +31,9 @@ namespace Database_Manager
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddProject));
             this.projectGroupBox = new System.Windows.Forms.GroupBox();
+            this.languageBox = new System.Windows.Forms.TextBox();
+            this.typeBox = new System.Windows.Forms.ComboBox();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.addLinkButton = new System.Windows.Forms.Button();
             this.linkChangeButton = new System.Windows.Forms.Button();
@@ -42,9 +45,6 @@ namespace Database_Manager
             this.typeLabel = new System.Windows.Forms.Label();
             this.languageLabel = new System.Windows.Forms.Label();
             this.titleLabel = new System.Windows.Forms.Label();
-            this.cancelButton = new System.Windows.Forms.Button();
-            this.typeBox = new System.Windows.Forms.ComboBox();
-            this.languageBox = new System.Windows.Forms.TextBox();
             this.projectGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +73,38 @@ namespace Database_Manager
             this.projectGroupBox.TabStop = false;
             this.projectGroupBox.Text = "Add Project";
             // 
+            // languageBox
+            // 
+            this.languageBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.languageBox.Location = new System.Drawing.Point(326, 130);
+            this.languageBox.Name = "languageBox";
+            this.languageBox.Size = new System.Drawing.Size(306, 25);
+            this.languageBox.TabIndex = 46;
+            // 
+            // typeBox
+            // 
+            this.typeBox.FormattingEnabled = true;
+            this.typeBox.Items.AddRange(new object[] {
+            "Education",
+            "Personal"});
+            this.typeBox.Location = new System.Drawing.Point(326, 82);
+            this.typeBox.Name = "typeBox";
+            this.typeBox.Size = new System.Drawing.Size(306, 25);
+            this.typeBox.TabIndex = 45;
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
+            this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelButton.ForeColor = System.Drawing.Color.White;
+            this.cancelButton.Location = new System.Drawing.Point(461, 496);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(125, 40);
+            this.cancelButton.TabIndex = 44;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = false;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
             // addButton
             // 
             this.addButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
@@ -84,6 +116,7 @@ namespace Database_Manager
             this.addButton.TabIndex = 41;
             this.addButton.Text = "Add Project";
             this.addButton.UseVisualStyleBackColor = false;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // addLinkButton
             // 
@@ -96,6 +129,7 @@ namespace Database_Manager
             this.addLinkButton.TabIndex = 40;
             this.addLinkButton.Text = "Add Link";
             this.addLinkButton.UseVisualStyleBackColor = false;
+            this.addLinkButton.Click += new System.EventHandler(this.addLinkButton_Click);
             // 
             // linkChangeButton
             // 
@@ -108,6 +142,7 @@ namespace Database_Manager
             this.linkChangeButton.TabIndex = 39;
             this.linkChangeButton.Text = "Change Link";
             this.linkChangeButton.UseVisualStyleBackColor = false;
+            this.linkChangeButton.Click += new System.EventHandler(this.linkChangeButton_Click);
             // 
             // linksLabel
             // 
@@ -185,37 +220,6 @@ namespace Database_Manager
             this.titleLabel.Size = new System.Drawing.Size(35, 17);
             this.titleLabel.TabIndex = 29;
             this.titleLabel.Text = "Title:";
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
-            this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.ForeColor = System.Drawing.Color.White;
-            this.cancelButton.Location = new System.Drawing.Point(461, 496);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(125, 40);
-            this.cancelButton.TabIndex = 44;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = false;
-            // 
-            // typeBox
-            // 
-            this.typeBox.FormattingEnabled = true;
-            this.typeBox.Items.AddRange(new object[] {
-            "Education",
-            "Personal"});
-            this.typeBox.Location = new System.Drawing.Point(326, 82);
-            this.typeBox.Name = "typeBox";
-            this.typeBox.Size = new System.Drawing.Size(306, 25);
-            this.typeBox.TabIndex = 45;
-            // 
-            // languageBox
-            // 
-            this.languageBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.languageBox.Location = new System.Drawing.Point(326, 130);
-            this.languageBox.Name = "languageBox";
-            this.languageBox.Size = new System.Drawing.Size(306, 25);
-            this.languageBox.TabIndex = 46;
             // 
             // AddProject
             // 

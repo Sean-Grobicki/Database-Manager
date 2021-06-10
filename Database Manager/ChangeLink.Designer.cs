@@ -31,6 +31,7 @@ namespace Database_Manager
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeLink));
             this.linkGroupBox = new System.Windows.Forms.GroupBox();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.linkTypeBox = new System.Windows.Forms.ComboBox();
@@ -39,7 +40,6 @@ namespace Database_Manager
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.linkNameLabel = new System.Windows.Forms.Label();
-            this.deleteButton = new System.Windows.Forms.Button();
             this.linkGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,19 @@ namespace Database_Manager
             this.linkGroupBox.TabStop = false;
             this.linkGroupBox.Text = "Change Link";
             // 
+            // deleteButton
+            // 
+            this.deleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
+            this.deleteButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteButton.ForeColor = System.Drawing.Color.White;
+            this.deleteButton.Location = new System.Drawing.Point(339, 297);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(125, 40);
+            this.deleteButton.TabIndex = 44;
+            this.deleteButton.Text = "Delete Link";
+            this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
             // cancelButton
             // 
             this.cancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
@@ -74,6 +87,7 @@ namespace Database_Manager
             this.cancelButton.TabIndex = 43;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // updateButton
             // 
@@ -86,6 +100,7 @@ namespace Database_Manager
             this.updateButton.TabIndex = 42;
             this.updateButton.Text = "Update Link";
             this.updateButton.UseVisualStyleBackColor = false;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // linkTypeBox
             // 
@@ -144,18 +159,6 @@ namespace Database_Manager
             this.linkNameLabel.Size = new System.Drawing.Size(72, 17);
             this.linkNameLabel.TabIndex = 0;
             this.linkNameLabel.Text = "Link Name:";
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
-            this.deleteButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteButton.ForeColor = System.Drawing.Color.White;
-            this.deleteButton.Location = new System.Drawing.Point(339, 297);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(125, 40);
-            this.deleteButton.TabIndex = 44;
-            this.deleteButton.Text = "Delete Link";
-            this.deleteButton.UseVisualStyleBackColor = false;
             // 
             // ChangeLink
             // 
