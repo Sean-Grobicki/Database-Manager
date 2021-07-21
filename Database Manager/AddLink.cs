@@ -43,16 +43,20 @@ namespace Database_Manager
                 newLink.Url = linkUrlBox.Text;
                 // Send the Link to the previous form to be added.
 
-                Form frm = Application.OpenForms[_previousForm];
-                frm.Show();
-                this.Close();
-            }
-            else
-            { 
-                // Display Message saying all fields are not entered.
-            }
-            
+                IAddChangeLink frm = (IAddChangeLink)Application.OpenForms[_previousForm];
+                if (frm != null)
+                {
+                    frm.addLink(newLink);
+                    frm.Show();
+                    this.Close();
+                }
+                else
+                {
+                    // Display Message saying all fields are not entered.
+                }
 
+
+            }
         }
     }
 }

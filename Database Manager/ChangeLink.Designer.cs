@@ -35,7 +35,7 @@ namespace Database_Manager
             this.cancelButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.linkTypeBox = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.linkUrlBox = new System.Windows.Forms.TextBox();
             this.linkNameBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,7 +49,7 @@ namespace Database_Manager
             this.linkGroupBox.Controls.Add(this.cancelButton);
             this.linkGroupBox.Controls.Add(this.updateButton);
             this.linkGroupBox.Controls.Add(this.linkTypeBox);
-            this.linkGroupBox.Controls.Add(this.textBox1);
+            this.linkGroupBox.Controls.Add(this.linkUrlBox);
             this.linkGroupBox.Controls.Add(this.linkNameBox);
             this.linkGroupBox.Controls.Add(this.label2);
             this.linkGroupBox.Controls.Add(this.label1);
@@ -57,8 +57,10 @@ namespace Database_Manager
             this.linkGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.linkGroupBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkGroupBox.Location = new System.Drawing.Point(0, 0);
+            this.linkGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.linkGroupBox.Name = "linkGroupBox";
-            this.linkGroupBox.Size = new System.Drawing.Size(800, 450);
+            this.linkGroupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.linkGroupBox.Size = new System.Drawing.Size(600, 366);
             this.linkGroupBox.TabIndex = 1;
             this.linkGroupBox.TabStop = false;
             this.linkGroupBox.Text = "Change Link";
@@ -68,9 +70,10 @@ namespace Database_Manager
             this.deleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
             this.deleteButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteButton.ForeColor = System.Drawing.Color.White;
-            this.deleteButton.Location = new System.Drawing.Point(339, 297);
+            this.deleteButton.Location = new System.Drawing.Point(254, 241);
+            this.deleteButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(125, 40);
+            this.deleteButton.Size = new System.Drawing.Size(94, 32);
             this.deleteButton.TabIndex = 44;
             this.deleteButton.Text = "Delete Link";
             this.deleteButton.UseVisualStyleBackColor = false;
@@ -81,9 +84,10 @@ namespace Database_Manager
             this.cancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
             this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.ForeColor = System.Drawing.Color.White;
-            this.cancelButton.Location = new System.Drawing.Point(491, 297);
+            this.cancelButton.Location = new System.Drawing.Point(368, 241);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(125, 40);
+            this.cancelButton.Size = new System.Drawing.Size(94, 32);
             this.cancelButton.TabIndex = 43;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
@@ -94,9 +98,10 @@ namespace Database_Manager
             this.updateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
             this.updateButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateButton.ForeColor = System.Drawing.Color.White;
-            this.updateButton.Location = new System.Drawing.Point(184, 297);
+            this.updateButton.Location = new System.Drawing.Point(138, 241);
+            this.updateButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(125, 40);
+            this.updateButton.Size = new System.Drawing.Size(94, 32);
             this.updateButton.TabIndex = 42;
             this.updateButton.Text = "Update Link";
             this.updateButton.UseVisualStyleBackColor = false;
@@ -109,32 +114,36 @@ namespace Database_Manager
             "GitHub",
             "YouTube",
             "Hosting"});
-            this.linkTypeBox.Location = new System.Drawing.Point(339, 152);
+            this.linkTypeBox.Location = new System.Drawing.Point(254, 124);
+            this.linkTypeBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.linkTypeBox.Name = "linkTypeBox";
-            this.linkTypeBox.Size = new System.Drawing.Size(176, 25);
+            this.linkTypeBox.Size = new System.Drawing.Size(133, 25);
             this.linkTypeBox.TabIndex = 5;
             // 
-            // textBox1
+            // linkUrlBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(339, 215);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(176, 25);
-            this.textBox1.TabIndex = 4;
+            this.linkUrlBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkUrlBox.Location = new System.Drawing.Point(254, 175);
+            this.linkUrlBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.linkUrlBox.Name = "linkUrlBox";
+            this.linkUrlBox.Size = new System.Drawing.Size(133, 25);
+            this.linkUrlBox.TabIndex = 4;
             // 
             // linkNameBox
             // 
             this.linkNameBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkNameBox.Location = new System.Drawing.Point(339, 82);
+            this.linkNameBox.Location = new System.Drawing.Point(254, 67);
+            this.linkNameBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.linkNameBox.Name = "linkNameBox";
-            this.linkNameBox.Size = new System.Drawing.Size(176, 25);
+            this.linkNameBox.Size = new System.Drawing.Size(133, 25);
             this.linkNameBox.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(204, 220);
+            this.label2.Location = new System.Drawing.Point(153, 179);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 17);
             this.label2.TabIndex = 2;
@@ -144,7 +153,8 @@ namespace Database_Manager
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(204, 152);
+            this.label1.Location = new System.Drawing.Point(153, 124);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 17);
             this.label1.TabIndex = 1;
@@ -154,7 +164,8 @@ namespace Database_Manager
             // 
             this.linkNameLabel.AutoSize = true;
             this.linkNameLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkNameLabel.Location = new System.Drawing.Point(204, 82);
+            this.linkNameLabel.Location = new System.Drawing.Point(153, 67);
+            this.linkNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.linkNameLabel.Name = "linkNameLabel";
             this.linkNameLabel.Size = new System.Drawing.Size(72, 17);
             this.linkNameLabel.TabIndex = 0;
@@ -162,12 +173,13 @@ namespace Database_Manager
             // 
             // ChangeLink
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(175)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.linkGroupBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ChangeLink";
             this.Text = "Change Link";
             this.linkGroupBox.ResumeLayout(false);
@@ -183,7 +195,7 @@ namespace Database_Manager
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.ComboBox linkTypeBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox linkUrlBox;
         private System.Windows.Forms.TextBox linkNameBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

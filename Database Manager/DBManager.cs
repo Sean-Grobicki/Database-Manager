@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Database_Manager
 {
-    public partial class DBManager : Form
+    public partial class DBManager : Form, IAddChangeLink
     {
         private APICalls _api = new APICalls();
         private List<Project> _projects;
@@ -23,7 +23,6 @@ namespace Database_Manager
         private async void getProjects()
         {
             _projects = await _api.getAllProjects();
-            projectBox.Items.Clear();
             foreach (Project p in _projects)
             {
                 projectBox.Items.Add(p.Title);
@@ -78,6 +77,19 @@ namespace Database_Manager
             return null;
         }
 
+        private Link getLink(string url)
+        {
+            Project thisProject = getProject(projectBox.SelectedItem.ToString());
+            foreach (Link l in thisProject.Links)
+            {
+                if (l.Url == url)
+                {
+                    return l;
+                }
+            }
+            return null;
+        }
+
         private void addButton_Click(object sender, EventArgs e)
         {
             AddProject ap = new AddProject();
@@ -107,9 +119,32 @@ namespace Database_Manager
 
         private void linkChangeButton_Click(object sender, EventArgs e)
         {
-            ChangeLink cl = new ChangeLink("DBManager");
+            Link selectedLink = getLink(linksBox.SelectedItem.ToString());
+            ChangeLink cl = new ChangeLink(selectedLink,"DBManager");
             cl.Show();
             this.Hide();
+        }
+
+        public void addLink(Link newLink)
+        {
+            Project thisProject = getProject(projectBox.SelectedItem.ToString());
+            thisProject.Links.Add(newLink);
+            updateLinks();
+        }
+
+        public void changeLink(int id, Link newLink)
+        { 
+        
+        }
+
+        private void updateLinks()
+        {
+            Project thisProject = getProject(projectBox.SelectedItem.ToString());
+            linksBox.Items.Clear();
+            foreach (Link l in thisProject.Links)
+            {
+                linksBox.Items.Add(l.Url);
+            }
         }
     }
 }

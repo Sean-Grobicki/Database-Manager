@@ -103,6 +103,7 @@
     <Compile Include="DBManager.Designer.cs">
       <DependentUpon>DBManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="IAddLink.cs" />
     <Compile Include="Link.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Project.cs" />

@@ -19,6 +19,9 @@ namespace Database_Manager
             InitializeComponent();
             _previousForm = previousForm;
             _link = link;
+            linkNameBox.Text = _link.Name;
+            linkTypeBox.Text = _link.Type;
+            linkUrlBox.Text = _link.Url;
         }
 
         private void updateButton_Click(object sender, EventArgs e)
