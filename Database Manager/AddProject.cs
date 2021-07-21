@@ -69,9 +69,19 @@ namespace Database_Manager
             updateLinks();
         }
 
-        public void changeLink(int id, Link newLink)
-        { 
-        
+        public void changeLink(string oldUrl, Link newLink)
+        {
+            Link oldLink = getLink(oldUrl);
+            oldLink = newLink;
+            updateLinks();
+        }
+
+        public void deleteLink(string url)
+        {
+            Link toRemove = getLink(url);
+            _links.Remove(toRemove);
+            linksBox.ClearSelected();
+            updateLinks();
         }
 
         private void updateLinks()

@@ -10,7 +10,9 @@ namespace Database_Manager
     {
         void addLink(Link newLink);
 
-        void changeLink(int id, Link newLink);
+        void changeLink(string oldUrl, Link newLink);
+
+        void deleteLink(string url);
 
         void Show();
     }
