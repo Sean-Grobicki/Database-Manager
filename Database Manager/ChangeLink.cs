@@ -20,8 +20,8 @@ namespace Database_Manager
             InitializeComponent();
             _previousForm = previousForm;
             _link = link;
-            linkNameBox.Text = _link.linkName;
-            linkTypeBox.Text = _link.linkType;
+            linkNameBox.Text = _link.name;
+            linkTypeBox.Text = _link.type;
             linkUrlBox.Text = _link.url;
             oldUrl = _link.url;
         }
@@ -32,8 +32,8 @@ namespace Database_Manager
 
             // Send the link object to the previous form.
             // Use information from form to create a link object
-            _link.linkName = linkNameBox.Text;
-            _link.linkType = linkTypeBox.SelectedItem.ToString();
+            _link.name = linkNameBox.Text;
+            _link.type = linkTypeBox.SelectedItem.ToString();
             _link.url = linkUrlBox.Text;
             // Send the Link to the previous form to be added.
 

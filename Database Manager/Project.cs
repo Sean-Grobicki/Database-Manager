@@ -24,7 +24,7 @@ namespace Database_Manager
             this.language = language;
         }
 
-        public int projectId { get => _id; set => _id = value; }
+        public int projectID { get => _id; set => _id = value; }
         public string title { get => _title; set => _title = value; }
         public string type { get => _type; set => _type = value; }
         public string description { get => _description; set => _description = value; }

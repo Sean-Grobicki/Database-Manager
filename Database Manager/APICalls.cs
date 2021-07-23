@@ -41,14 +41,18 @@ namespace Database_Manager
             return response.StatusCode;
         }
 
-        //public async Task<HttpStatusCode> updateProject(Project project)
-        //{
-           
-        //}
+        public async Task<HttpStatusCode> updateProject(Project project)
+        {
+            string JSON = JsonConvert.SerializeObject(project);
+            StringContent content = new StringContent(JSON, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _client.PutAsync(_serverAddress + "/api/project/" + project.projectID,(HttpContent) content);
+            response.EnsureSuccessStatusCode();
+            return response.StatusCode;
+        }
 
         public async Task<HttpStatusCode> deleteProject(Project project)
         {
-            HttpResponseMessage response = await _client.DeleteAsync(_serverAddress + "/api/project/" + project.projectId);
+            HttpResponseMessage response = await _client.DeleteAsync(_serverAddress + "/api/project/" + project.projectID);
             response.EnsureSuccessStatusCode();
             return response.StatusCode;
         }

@@ -23,6 +23,13 @@ namespace Database_Manager
         private async void getProjects()
         {
             _projects = await _api.getAllProjects();
+            linksBox.Items.Clear();
+            titleBox.Text = "";
+            languageBox.Text = "";
+            typeBox.Text = "";
+            descriptionTextBox.Text = "";
+            projectBox.Items.Clear();
+            projectBox.ClearSelected();
             foreach (Project p in _projects)
             {
                 projectBox.Items.Add(p.title);
@@ -35,13 +42,17 @@ namespace Database_Manager
             // Make an API call to get all projects then display the id's and titles in the project box.   
         }
 
-        private void updateButton_Click(object sender, EventArgs e)
+        private async void updateButton_Click(object sender, EventArgs e)
         {
-            // Check that a project is selected.
             if (projectBox.SelectedIndex != -1)
             {
-                // Send Patch request to API for the feels.
-                // If successful send notifcation saying worked or not worked.
+                Project thisProject = getProject(projectBox.SelectedItem.ToString());
+                thisProject.title = titleBox.Text;
+                thisProject.type = typeBox.Text;
+                thisProject.description = descriptionTextBox.Text;
+                thisProject.language = languageBox.Text;
+
+                await _api.updateProject(thisProject);
                 getProjects();
             }
         }
@@ -106,7 +117,7 @@ namespace Database_Manager
             if (projectBox.SelectedIndex != -1)
             {
                 await _api.deleteProject(getProject(projectBox.SelectedItem.ToString()));
-                refreshProjects();
+                getProjects();
             }
             // Send Delete Request to API.
             // Show Notification on success of the request.
@@ -164,21 +175,8 @@ namespace Database_Manager
         public async void addProject(Project toAdd)
         {
             await _api.addProject(toAdd);
-            refreshProjects();
-        }
-
-        private void refreshProjects()
-        {
-            //Clear all other boxes aswell
-            linksBox.Items.Clear();
-            titleBox.Text = "";
-            languageBox.Text = "";
-            typeBox.Text = "";
-            descriptionTextBox.Text = "";
-            projectBox.Items.Clear();
-            projectBox.ClearSelected();
             getProjects();
-
         }
+
     }
 }

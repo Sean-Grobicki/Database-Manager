@@ -38,8 +38,8 @@ namespace Database_Manager
             if (inputCheck())
             {
                 // Use information from form to create a link object
-                newLink.linkName = linkNameBox.Text;
-                newLink.linkType = linkTypeBox.SelectedItem.ToString();
+                newLink.name = linkNameBox.Text;
+                newLink.type = linkTypeBox.SelectedItem.ToString();
                 newLink.url = linkUrlBox.Text;
                 // Send the Link to the previous form to be added.
 
