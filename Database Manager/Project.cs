@@ -7,7 +7,7 @@ using System.Net;
 
 namespace Database_Manager
 {
-    class Project
+    public class Project
     {
         private int _id;
         private string _title;
@@ -18,39 +18,18 @@ namespace Database_Manager
 
         public Project(string title, string type, string description, string language)
         {
-            Title = title;
-            Type = type;
-            Description = description;
-            Language = language;
+            this.title = title;
+            this.type = type;
+            this.description = description;
+            this.language = language;
         }
 
-        public string Title { get => _title; set => _title = value; }
-        public string Type { get => _type; set => _type = value; }
-        public string Description { get => _description; set => _description = value; }
-        public string Language { get => _language; set => _language = value; }
-        public int Id { get => _id; set => _id = value; }
-        public List<Link> Links { get => _links; set => _links = value; }
-
-        public void addLink(string linkName, string linkType, string url)
-        {
-            Link toAdd = new Link(Links.Count,linkName, linkType, url);
-            Links.Add(toAdd);
-        }
-        public void showLinks()
-        {
-            foreach (Link l in Links)
-            {
-                Console.WriteLine(l.LinkId + " " + l.Name + " " + l.Type + " " + l.Url);
-            }
-        }
-        public string getJSON()
-        {
-            // Get all the links in a json format
-
-            // Add that to the json format of project under links
-            return ""; 
-        }
-
+        public int projectId { get => _id; set => _id = value; }
+        public string title { get => _title; set => _title = value; }
+        public string type { get => _type; set => _type = value; }
+        public string description { get => _description; set => _description = value; }
+        public string language { get => _language; set => _language = value; }
+        public List<Link> links { get => _links; set => _links = value; }
 
     }
 }

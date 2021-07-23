@@ -12,7 +12,7 @@ namespace Database_Manager
 {
     public partial class AddProject : Form, IAddChangeLink
     {
-
+        private Project _thisProject;
         private List<Link> _links = new List<Link>();
         public AddProject()
         {
@@ -28,9 +28,25 @@ namespace Database_Manager
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            Form frm = Application.OpenForms["DBManager"];
-            frm.Show();
-            this.Close();
+            if (inputChecks())
+            {
+                _thisProject = new Project(titleBox.Text, typeBox.Text, descriptionTextBox.Text, languageBox.Text);
+                _thisProject.links = _links;
+                DBManager frm = (DBManager)Application.OpenForms["DBManager"];
+                frm.addProject(_thisProject);
+                frm.Show();
+                this.Close();
+            }
+            else
+            { 
+                // Error Message that all are not filled in.
+            }
+            
+        }
+
+        private bool inputChecks()
+        {
+            return titleBox.Text != null && typeBox.Text != null && descriptionTextBox.Text != null && languageBox.Text != null;
         }
 
         private void addLinkButton_Click(object sender, EventArgs e)
@@ -44,7 +60,7 @@ namespace Database_Manager
         {
             foreach (Link l in _links)
             {
-                if (l.Url == url)
+                if (l.url == url)
                 {
                     return l;
                 }
@@ -89,7 +105,7 @@ namespace Database_Manager
             linksBox.Items.Clear();
             foreach (Link l in _links)
             {
-                linksBox.Items.Add(l.Url);
+                linksBox.Items.Add(l.url);
             }
         }
     }

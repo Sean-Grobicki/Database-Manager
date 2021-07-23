@@ -38,9 +38,9 @@ namespace Database_Manager
             if (inputCheck())
             {
                 // Use information from form to create a link object
-                newLink.Name = linkNameBox.Text;
-                newLink.Type = linkTypeBox.SelectedItem.ToString();
-                newLink.Url = linkUrlBox.Text;
+                newLink.linkName = linkNameBox.Text;
+                newLink.linkType = linkTypeBox.SelectedItem.ToString();
+                newLink.url = linkUrlBox.Text;
                 // Send the Link to the previous form to be added.
 
                 IAddChangeLink frm = (IAddChangeLink)Application.OpenForms[_previousForm];

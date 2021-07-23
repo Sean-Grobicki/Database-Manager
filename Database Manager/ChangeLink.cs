@@ -20,10 +20,10 @@ namespace Database_Manager
             InitializeComponent();
             _previousForm = previousForm;
             _link = link;
-            linkNameBox.Text = _link.Name;
-            linkTypeBox.Text = _link.Type;
-            linkUrlBox.Text = _link.Url;
-            oldUrl = _link.Url;
+            linkNameBox.Text = _link.linkName;
+            linkTypeBox.Text = _link.linkType;
+            linkUrlBox.Text = _link.url;
+            oldUrl = _link.url;
         }
 
         private void updateButton_Click(object sender, EventArgs e)
@@ -32,9 +32,9 @@ namespace Database_Manager
 
             // Send the link object to the previous form.
             // Use information from form to create a link object
-            _link.Name = linkNameBox.Text;
-            _link.Type = linkTypeBox.SelectedItem.ToString();
-            _link.Url = linkUrlBox.Text;
+            _link.linkName = linkNameBox.Text;
+            _link.linkType = linkTypeBox.SelectedItem.ToString();
+            _link.url = linkUrlBox.Text;
             // Send the Link to the previous form to be added.
 
             IAddChangeLink frm = (IAddChangeLink)Application.OpenForms[_previousForm];

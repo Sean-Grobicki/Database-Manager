@@ -24,24 +24,34 @@ namespace Database_Manager
             _client.BaseAddress = new Uri(_serverAddress);
         }
 
-        //public async Task<HttpStatusCode> addProject(Project project)
-        //{
-        //    //HttpResponseMessage response = await _client.PostAsync(_serverAddress + "/project",project);
-        //    //response.EnsureSuccessStatusCode();
-        //    //return response.StatusCode;
-        //}
+        public async Task<HttpStatusCode> addProject(Project project)
+        {
+            string JSON = JsonConvert.SerializeObject(project);
+            //if (project.links.Count == 0)
+            //{
+            //    var jObj = (Newtonsoft.Json.Linq.JObject)JsonConvert.DeserializeObject(JSON);
+            //    jObj.Property("links").Remove();
+            //    JSON =  jObj.ToString();
+            //}
+            StringContent content = new StringContent(JSON, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _client.PostAsync(_serverAddress + $"/api/project",(HttpContent)content);
+            Console.WriteLine(response.ReasonPhrase);
+            response.EnsureSuccessStatusCode();
+            
+            return response.StatusCode;
+        }
 
         //public async Task<HttpStatusCode> updateProject(Project project)
         //{
            
         //}
 
-        //public async Task<HttpStatusCode> deleteProject(Project project)
-        //{
-        //    HttpResponseMessage response = await _client.DeleteAsync(_serverAddress + "/project/"+project.Id);
-        //    response.EnsureSuccessStatusCode();
-        //    return response.StatusCode;
-        //}
+        public async Task<HttpStatusCode> deleteProject(Project project)
+        {
+            HttpResponseMessage response = await _client.DeleteAsync(_serverAddress + "/api/project/" + project.projectId);
+            response.EnsureSuccessStatusCode();
+            return response.StatusCode;
+        }
 
         public async Task<List<Project>> getAllProjects()
         {

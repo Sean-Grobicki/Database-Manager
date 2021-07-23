@@ -25,7 +25,7 @@ namespace Database_Manager
             _projects = await _api.getAllProjects();
             foreach (Project p in _projects)
             {
-                projectBox.Items.Add(p.Title);
+                projectBox.Items.Add(p.title);
             }
         }
 
@@ -48,12 +48,15 @@ namespace Database_Manager
 
         private void projectBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Project selectedProject = getProject(projectBox.SelectedItem.ToString());
-            setLinks(selectedProject.Links);
-            titleBox.Text = selectedProject.Title;
-            typeBox.Text = selectedProject.Type;
-            languageBox.Text = selectedProject.Language;
-            descriptionTextBox.Text = selectedProject.Description;
+            if (projectBox.SelectedIndex >= 0)
+            {
+                Project selectedProject = getProject(projectBox.SelectedItem.ToString());
+                setLinks(selectedProject.links);
+                titleBox.Text = selectedProject.title;
+                typeBox.Text = selectedProject.type;
+                languageBox.Text = selectedProject.language;
+                descriptionTextBox.Text = selectedProject.description;
+            }
         }
 
         private void setLinks(List<Link> links )
@@ -61,7 +64,7 @@ namespace Database_Manager
             linksBox.Items.Clear();
             foreach (Link l in links)
             {
-                linksBox.Items.Add(l.Url);
+                linksBox.Items.Add(l.url);
             }
         }
 
@@ -69,7 +72,7 @@ namespace Database_Manager
         {
             foreach (Project p in _projects)
             {
-                if (p.Title == name)
+                if (p.title == name)
                 {
                     return p;
                 }
@@ -80,9 +83,9 @@ namespace Database_Manager
         private Link getLink(string url)
         {
             Project thisProject = getProject(projectBox.SelectedItem.ToString());
-            foreach (Link l in thisProject.Links)
+            foreach (Link l in thisProject.links)
             {
-                if (l.Url == url)
+                if (l.url == url)
                 {
                     return l;
                 }
@@ -97,13 +100,13 @@ namespace Database_Manager
             this.Hide();
         }
 
-        private void deleteButton_Click(object sender, EventArgs e)
+        private async void deleteButton_Click(object sender, EventArgs e)
         {
             // Check that a Project is selected
             if (projectBox.SelectedIndex != -1)
             {
-
-                getProjects();
+                await _api.deleteProject(getProject(projectBox.SelectedItem.ToString()));
+                refreshProjects();
             }
             // Send Delete Request to API.
             // Show Notification on success of the request.
@@ -128,7 +131,7 @@ namespace Database_Manager
         public void addLink(Link newLink)
         {
             Project thisProject = getProject(projectBox.SelectedItem.ToString());
-            thisProject.Links.Add(newLink);
+            thisProject.links.Add(newLink);
             updateLinks();
         }
 
@@ -143,7 +146,7 @@ namespace Database_Manager
         {
             Project thisProject = getProject(projectBox.SelectedItem.ToString());
             Link toRemove = getLink(url);
-            thisProject.Links.Remove(toRemove);
+            thisProject.links.Remove(toRemove);
             linksBox.ClearSelected();
             updateLinks();
         }
@@ -152,10 +155,30 @@ namespace Database_Manager
         {
             Project thisProject = getProject(projectBox.SelectedItem.ToString());
             linksBox.Items.Clear();
-            foreach (Link l in thisProject.Links)
+            foreach (Link l in thisProject.links)
             {
-                linksBox.Items.Add(l.Url);
+                linksBox.Items.Add(l.url);
             }
+        }
+
+        public async void addProject(Project toAdd)
+        {
+            await _api.addProject(toAdd);
+            refreshProjects();
+        }
+
+        private void refreshProjects()
+        {
+            //Clear all other boxes aswell
+            linksBox.Items.Clear();
+            titleBox.Text = "";
+            languageBox.Text = "";
+            typeBox.Text = "";
+            descriptionTextBox.Text = "";
+            projectBox.Items.Clear();
+            projectBox.ClearSelected();
+            getProjects();
+
         }
     }
 }

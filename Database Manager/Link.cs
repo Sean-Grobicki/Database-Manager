@@ -8,7 +8,6 @@ namespace Database_Manager
 {
     public class Link
     {
-        private int _id;
         private string _linkName;
         private string _linkType;
         private string _url;
@@ -17,23 +16,16 @@ namespace Database_Manager
         { 
             
         }
-        public Link(int id, string linkName, string linkType, string url)
+        public Link(string linkName, string linkType, string url)
         {
-            LinkId = id;
-            Name = linkName;
-            Type = linkType;
-            Url = url;
+            this.linkName = linkName;
+            this.linkType = linkType;
+            this.url = url;
         }
 
-        public string Name { get => _linkName; set => _linkName = value; }
-        public string Type { get => _linkType; set => _linkType = value; }
-        public string Url { get => _url; set => _url = value; }
-        public int LinkId { get => _id; set => _id = value; }
-
-        public string getJSON()
-        {
-            return "";
-        }
+        public string linkName { get => _linkName; set => _linkName = value; }
+        public string linkType { get => _linkType; set => _linkType = value; }
+        public string url { get => _url; set => _url = value; }
 
     }
 }
