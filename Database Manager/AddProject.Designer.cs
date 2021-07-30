@@ -45,11 +45,13 @@ namespace Database_Manager
             this.typeLabel = new System.Windows.Forms.Label();
             this.languageLabel = new System.Windows.Forms.Label();
             this.titleLabel = new System.Windows.Forms.Label();
+            this.errorMessage = new System.Windows.Forms.Label();
             this.projectGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // projectGroupBox
             // 
+            this.projectGroupBox.Controls.Add(this.errorMessage);
             this.projectGroupBox.Controls.Add(this.languageBox);
             this.projectGroupBox.Controls.Add(this.typeBox);
             this.projectGroupBox.Controls.Add(this.cancelButton);
@@ -68,7 +70,7 @@ namespace Database_Manager
             this.projectGroupBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.projectGroupBox.Location = new System.Drawing.Point(0, 0);
             this.projectGroupBox.Name = "projectGroupBox";
-            this.projectGroupBox.Size = new System.Drawing.Size(892, 552);
+            this.projectGroupBox.Size = new System.Drawing.Size(920, 602);
             this.projectGroupBox.TabIndex = 29;
             this.projectGroupBox.TabStop = false;
             this.projectGroupBox.Text = "Add Project";
@@ -221,16 +223,26 @@ namespace Database_Manager
             this.titleLabel.TabIndex = 29;
             this.titleLabel.Text = "Title:";
             // 
+            // errorMessage
+            // 
+            this.errorMessage.AutoSize = true;
+            this.errorMessage.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorMessage.Location = new System.Drawing.Point(197, 554);
+            this.errorMessage.Name = "errorMessage";
+            this.errorMessage.Size = new System.Drawing.Size(0, 25);
+            this.errorMessage.TabIndex = 47;
+            // 
             // AddProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(175)))));
-            this.ClientSize = new System.Drawing.Size(892, 552);
+            this.ClientSize = new System.Drawing.Size(920, 602);
             this.Controls.Add(this.projectGroupBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddProject";
             this.Text = "Add Project";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddProject_FormClosed);
             this.projectGroupBox.ResumeLayout(false);
             this.projectGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -254,5 +266,6 @@ namespace Database_Manager
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.TextBox languageBox;
         private System.Windows.Forms.ComboBox typeBox;
+        private System.Windows.Forms.Label errorMessage;
     }
 }

@@ -46,6 +46,7 @@ namespace Database_Manager
             this.linksLabel = new System.Windows.Forms.Label();
             this.linkChangeButton = new System.Windows.Forms.Button();
             this.addLinkButton = new System.Windows.Forms.Button();
+            this.errorMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // projectBox
@@ -193,6 +194,7 @@ namespace Database_Manager
             this.linksBox.Name = "linksBox";
             this.linksBox.Size = new System.Drawing.Size(385, 104);
             this.linksBox.TabIndex = 12;
+            this.linksBox.SelectedIndexChanged += new System.EventHandler(this.linksBox_SelectedIndexChanged);
             // 
             // linksLabel
             // 
@@ -230,12 +232,22 @@ namespace Database_Manager
             this.addLinkButton.UseVisualStyleBackColor = false;
             this.addLinkButton.Click += new System.EventHandler(this.addLinkButton_Click);
             // 
+            // errorMessage
+            // 
+            this.errorMessage.AutoSize = true;
+            this.errorMessage.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorMessage.Location = new System.Drawing.Point(396, 9);
+            this.errorMessage.Name = "errorMessage";
+            this.errorMessage.Size = new System.Drawing.Size(0, 25);
+            this.errorMessage.TabIndex = 16;
+            // 
             // DBManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(175)))));
             this.ClientSize = new System.Drawing.Size(951, 592);
+            this.Controls.Add(this.errorMessage);
             this.Controls.Add(this.projectBox);
             this.Controls.Add(this.addLinkButton);
             this.Controls.Add(this.linkChangeButton);
@@ -259,6 +271,7 @@ namespace Database_Manager
             this.Name = "DBManager";
             this.Text = "Database Manager";
             this.TransparencyKey = System.Drawing.SystemColors.Window;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DBManager_FormClosing);
             this.Load += new System.EventHandler(this.DBManager_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -283,6 +296,7 @@ namespace Database_Manager
         private System.Windows.Forms.Label linksLabel;
         private System.Windows.Forms.Button linkChangeButton;
         private System.Windows.Forms.Button addLinkButton;
+        private System.Windows.Forms.Label errorMessage;
     }
 }
 

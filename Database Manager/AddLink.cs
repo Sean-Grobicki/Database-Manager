@@ -22,8 +22,7 @@ namespace Database_Manager
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            Form frm = Application.OpenForms[_previousForm];
-            frm.Show();
+
             this.Close();
         }
 
@@ -42,21 +41,24 @@ namespace Database_Manager
                 newLink.type = linkTypeBox.SelectedItem.ToString();
                 newLink.url = linkUrlBox.Text;
                 // Send the Link to the previous form to be added.
-
-                IAddChangeLink frm = (IAddChangeLink)Application.OpenForms[_previousForm];
-                if (frm != null)
-                {
-                    frm.addLink(newLink);
-                    frm.Show();
-                    this.Close();
-                }
-                else
-                {
-                    // Display Message saying all fields are not entered.
-                }
-
-
+                this.Close();
             }
+            else
+            {
+                errorMessage.Text = "All Fields are required";
+            }
+
+
+        }
+
+        private void AddLink_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            IAddChangeLink frm = (IAddChangeLink)Application.OpenForms[_previousForm];
+            if (newLink.name != null)
+            {
+                frm.addLink(newLink);
+            }
+            frm.Show();
         }
     }
 }

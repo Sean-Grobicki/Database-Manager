@@ -22,6 +22,7 @@ namespace Database_Manager
 
         private async void getProjects()
         {
+            errorMessage.Text = "Loading ...";
             _projects = await _api.getAllProjects();
             linksBox.Items.Clear();
             titleBox.Text = "";
@@ -34,6 +35,7 @@ namespace Database_Manager
             {
                 projectBox.Items.Add(p.title);
             }
+            errorMessage.Text = "";
         }
 
         private void DBManager_Load(object sender, EventArgs e)
@@ -55,6 +57,10 @@ namespace Database_Manager
                 await _api.updateProject(thisProject);
                 getProjects();
             }
+            else
+            {
+                errorMessage.Text = "No Project Selected";
+            }
         }
 
         private void projectBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -67,6 +73,7 @@ namespace Database_Manager
                 typeBox.Text = selectedProject.type;
                 languageBox.Text = selectedProject.language;
                 descriptionTextBox.Text = selectedProject.description;
+                errorMessage.Text = "";
             }
         }
 
@@ -116,27 +123,47 @@ namespace Database_Manager
             // Check that a Project is selected
             if (projectBox.SelectedIndex != -1)
             {
-                await _api.deleteProject(getProject(projectBox.SelectedItem.ToString()));
-                getProjects();
+                if (MessageBox.Show("Are you sure you want to delete this Project? ", "Database Manager",
+         MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    await _api.deleteProject(getProject(projectBox.SelectedItem.ToString()));
+                    getProjects();
+                }
             }
-            // Send Delete Request to API.
-            // Show Notification on success of the request.
+            else
+            {
+                errorMessage.Text = "No Project Selected";
+            }
             
         }
 
         private void addLinkButton_Click(object sender, EventArgs e)
         {
-            AddLink al = new AddLink("DBManager");
-            al.Show();
-            this.Hide();
+            if (projectBox.SelectedIndex != -1)
+            {
+                AddLink al = new AddLink("DBManager");
+                al.Show();
+                this.Hide();
+            }
+            else
+            {
+                errorMessage.Text = "No Project Selected";
+            }
         }
 
         private void linkChangeButton_Click(object sender, EventArgs e)
         {
-            Link selectedLink = getLink(linksBox.SelectedItem.ToString());
-            ChangeLink cl = new ChangeLink(selectedLink,"DBManager");
-            cl.Show();
-            this.Hide();
+            if (linksBox.SelectedIndex != -1)
+            {
+                Link selectedLink = getLink(linksBox.SelectedItem.ToString());
+                ChangeLink cl = new ChangeLink(selectedLink, "DBManager");
+                cl.Show();
+                this.Hide();
+            }
+            else
+            {
+                errorMessage.Text = "No Link Selected";
+            }
         }
 
         public void addLink(Link newLink)
@@ -178,5 +205,24 @@ namespace Database_Manager
             getProjects();
         }
 
+        private void linksBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (linksBox.SelectedIndex != -1)
+            {
+                errorMessage.Text = "";
+            }
+        }
+
+        private void DBManager_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Any non updated projects will be lost. Are you sure you want to close? ", "Database Manager",
+         MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+            }
+        }
     }
 }

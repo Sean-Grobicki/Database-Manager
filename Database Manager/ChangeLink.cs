@@ -14,7 +14,8 @@ namespace Database_Manager
     {
         private string _previousForm;
         private Link _link;
-        private string oldUrl;
+        private string _oldUrl;
+        private string _changeType = "";
         public ChangeLink(Link link, string previousForm)
         {
             InitializeComponent();
@@ -23,53 +24,58 @@ namespace Database_Manager
             linkNameBox.Text = _link.name;
             linkTypeBox.Text = _link.type;
             linkUrlBox.Text = _link.url;
-            oldUrl = _link.url;
+            _oldUrl = _link.url;
         }
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            // Get information from the form to change the link object
-
-            // Send the link object to the previous form.
-            // Use information from form to create a link object
-            _link.name = linkNameBox.Text;
-            _link.type = linkTypeBox.SelectedItem.ToString();
-            _link.url = linkUrlBox.Text;
-            // Send the Link to the previous form to be added.
-
-            IAddChangeLink frm = (IAddChangeLink)Application.OpenForms[_previousForm];
-            if (frm != null)
+            if (!fieldsEmpty())
             {
-               frm.changeLink(oldUrl,_link);
-               frm.Show();
-               this.Close();
-            }
-            else
-            {
-                 // Display Message saying all fields are not entered.
-            }
-        }
-
-        private void deleteButton_Click(object sender, EventArgs e)
-        {
-            IAddChangeLink frm = (IAddChangeLink)Application.OpenForms[_previousForm];
-            if (frm != null)
-            {
-                frm.deleteLink(oldUrl);
-                frm.Show();
+                _link.name = linkNameBox.Text;
+                _link.type = linkTypeBox.SelectedItem.ToString();
+                _link.url = linkUrlBox.Text;
+                _changeType = "Change";
                 this.Close();
             }
             else
             {
-                // Display Message saying all fields are not entered.
+                errorMessage.Text = "Fields cannot be empty";
             }
+        }
+
+        private bool fieldsEmpty()
+        {
+            return linkNameBox.Text == "" || linkTypeBox.Text == "" || linkUrlBox.Text == "";
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            _changeType = "Delete";
+            if (MessageBox.Show("Are you sure you want to delete this link? ", "Database Manager",
+         MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                this.Close();
+            }            
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            Form frm = Application.OpenForms[_previousForm];
-            frm.Show();
             this.Close();
+        }
+
+        private void ChangeLink_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            IAddChangeLink frm = (IAddChangeLink)Application.OpenForms[_previousForm];
+            if (_changeType == "Change")
+            {
+                frm.changeLink(_oldUrl, _link);
+            }
+            else if (_changeType == "Delete")
+            {
+                frm.deleteLink(_oldUrl);
+
+            }
+            frm.Show();
         }
     }
 }

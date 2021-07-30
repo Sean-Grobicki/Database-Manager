@@ -21,8 +21,6 @@ namespace Database_Manager
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            Form frm = Application.OpenForms["DBManager"];
-            frm.Show();
             this.Close();
         }
 
@@ -32,21 +30,19 @@ namespace Database_Manager
             {
                 _thisProject = new Project(titleBox.Text, typeBox.Text, descriptionTextBox.Text, languageBox.Text);
                 _thisProject.links = _links;
-                DBManager frm = (DBManager)Application.OpenForms["DBManager"];
-                frm.addProject(_thisProject);
-                frm.Show();
+                
                 this.Close();
             }
             else
-            { 
-                // Error Message that all are not filled in.
+            {
+                errorMessage.Text = "Title, Type, Language and Description are required fields.";
             }
             
         }
 
         private bool inputChecks()
         {
-            return titleBox.Text != null && typeBox.Text != null && descriptionTextBox.Text != null && languageBox.Text != null;
+            return titleBox.Text != "" && typeBox.Text != "" && descriptionTextBox.Text != "" && languageBox.Text != "";
         }
 
         private void addLinkButton_Click(object sender, EventArgs e)
@@ -73,9 +69,13 @@ namespace Database_Manager
             if (linksBox.SelectedIndex != -1)
             {
                 Link link = getLink(linksBox.SelectedItem.ToString());
-                ChangeLink cl = new ChangeLink(link,"AddProject");
+                ChangeLink cl = new ChangeLink(link, "AddProject");
                 cl.Show();
                 this.Hide();
+            }
+            else
+            {
+                errorMessage.Text = "No Link Selected.";
             }
         }
 
@@ -107,6 +107,16 @@ namespace Database_Manager
             {
                 linksBox.Items.Add(l.url);
             }
+        }
+
+        private void AddProject_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DBManager frm = (DBManager)Application.OpenForms["DBManager"];
+            if (_thisProject != null)
+            {
+                frm.addProject(_thisProject);
+            }
+            frm.Show();
         }
     }
 }
