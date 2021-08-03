@@ -54,8 +54,14 @@ namespace Database_Manager
                 thisProject.description = descriptionTextBox.Text;
                 thisProject.language = languageBox.Text;
 
-                await _api.updateProject(thisProject);
-                getProjects();
+                if (await _api.updateProject(thisProject))
+                {
+                    getProjects();
+                }
+                else
+                {
+                    errorMessage.Text = "Failed to update project";
+                }
             }
             else
             {
@@ -126,8 +132,14 @@ namespace Database_Manager
                 if (MessageBox.Show("Are you sure you want to delete this Project? ", "Database Manager",
          MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    await _api.deleteProject(getProject(projectBox.SelectedItem.ToString()));
-                    getProjects();
+                    if (await _api.deleteProject(getProject(projectBox.SelectedItem.ToString())))
+                    {
+                        getProjects();
+                    }
+                    else
+                    {
+                        errorMessage.Text = "Failed to delete this project.";
+                    }
                 }
             }
             else
@@ -201,8 +213,14 @@ namespace Database_Manager
 
         public async void addProject(Project toAdd)
         {
-            await _api.addProject(toAdd);
-            getProjects();
+            if (await _api.addProject(toAdd))
+            {
+                getProjects();
+            }
+            else
+            {
+                errorMessage.Text = "Failed to add project.";
+            }
         }
 
         private void linksBox_SelectedIndexChanged(object sender, EventArgs e)

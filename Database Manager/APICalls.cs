@@ -24,37 +24,26 @@ namespace Database_Manager
             _client.BaseAddress = new Uri(_serverAddress);
         }
 
-        public async Task<HttpStatusCode> addProject(Project project)
+        public async Task<bool> addProject(Project project)
         {
             string JSON = JsonConvert.SerializeObject(project);
-            //if (project.links.Count == 0)
-            //{
-            //    var jObj = (Newtonsoft.Json.Linq.JObject)JsonConvert.DeserializeObject(JSON);
-            //    jObj.Property("links").Remove();
-            //    JSON =  jObj.ToString();
-            //}
             StringContent content = new StringContent(JSON, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await _client.PostAsync(_serverAddress + $"/api/project",(HttpContent)content);
-            Console.WriteLine(response.ReasonPhrase);
-            response.EnsureSuccessStatusCode();
-            
-            return response.StatusCode;
+            return response.IsSuccessStatusCode;
         }
 
-        public async Task<HttpStatusCode> updateProject(Project project)
+        public async Task<bool> updateProject(Project project)
         {
             string JSON = JsonConvert.SerializeObject(project);
             StringContent content = new StringContent(JSON, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await _client.PutAsync(_serverAddress + "/api/project/" + project.projectID,(HttpContent) content);
-            response.EnsureSuccessStatusCode();
-            return response.StatusCode;
+            return response.IsSuccessStatusCode;
         }
 
-        public async Task<HttpStatusCode> deleteProject(Project project)
+        public async Task<bool> deleteProject(Project project)
         {
             HttpResponseMessage response = await _client.DeleteAsync(_serverAddress + "/api/project/" + project.projectID);
-            response.EnsureSuccessStatusCode();
-            return response.StatusCode;
+            return response.IsSuccessStatusCode;
         }
 
         public async Task<List<Project>> getAllProjects()
@@ -63,13 +52,6 @@ namespace Database_Manager
             List<Project> allProjects = JsonConvert.DeserializeObject<List<Project>>(serialisedJson);
             return allProjects;
         }
-
-        //public async Task<Project> getProject(int id)
-        //{
-        //    HttpResponseMessage response = await _client.GetAsync(_serverAddress + "/project/" + id);
-        //    response.EnsureSuccessStatusCode();
-
-        //}
     }
 }
 
