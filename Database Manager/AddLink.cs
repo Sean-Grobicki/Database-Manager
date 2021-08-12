@@ -60,5 +60,10 @@ namespace Database_Manager
             }
             frm.Show();
         }
+
+        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

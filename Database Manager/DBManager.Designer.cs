@@ -246,7 +246,7 @@ namespace Database_Manager
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(175)))));
-            this.ClientSize = new System.Drawing.Size(951, 592);
+            this.ClientSize = new System.Drawing.Size(984, 642);
             this.Controls.Add(this.errorMessage);
             this.Controls.Add(this.projectBox);
             this.Controls.Add(this.addLinkButton);
@@ -268,6 +268,8 @@ namespace Database_Manager
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximumSize = new System.Drawing.Size(1000, 700);
+            this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "DBManager";
             this.Text = "Database Manager";
             this.TransparencyKey = System.Drawing.SystemColors.Window;
