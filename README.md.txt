@@ -1,0 +1,1 @@
+This is a Database Management system for the database in the portfolio website. This provides a UI to easily make changes to the database which is MongoDB. The content in the database consists of.
