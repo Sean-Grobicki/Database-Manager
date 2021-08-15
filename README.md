@@ -1,1 +1,2 @@
-This is a Database Management system for the database in the portfolio website. This provides a UI to easily make changes to the database which is MongoDB. The content in the database consists of.
+# Portfolio Database Manager
+This is a Database Management system for the database in the [portfolio website](https://github.com/Sean-Grobicki/Projects-Website). This provides a UI to easily make changes to the database which is in MongoDB. The system is designed in Windows Forms .Net 5 using Visual Studio. The content in the database consists of portfolio projects to showcase for employers. This program is unavailable for demo as could damage website but can be viewed in a video demo linked [here](www.youtube.com).
