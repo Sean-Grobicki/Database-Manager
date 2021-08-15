@@ -28,7 +28,7 @@ namespace Database_Manager
 
         private bool inputCheck()
         {
-            return linkNameBox.Text != "" && linkTypeBox.SelectedIndex != -1 && linkUrlBox.Text != "";
+            return linkNameBox.Text != "" && linkTypeBox.Text != "" && linkUrlBox.Text != "";
         }
 
         private void addButton_Click(object sender, EventArgs e)
