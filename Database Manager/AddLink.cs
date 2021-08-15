@@ -22,7 +22,6 @@ namespace Database_Manager
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-
             this.Close();
         }
 
@@ -65,5 +64,6 @@ namespace Database_Manager
         {
 
         }
+
     }
 }

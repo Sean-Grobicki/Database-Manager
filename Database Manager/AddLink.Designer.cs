@@ -31,7 +31,6 @@ namespace Database_Manager
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddLink));
             this.linkGroupBox = new System.Windows.Forms.GroupBox();
-            this.errorMessage = new System.Windows.Forms.Label();
             this.linkNameBox = new System.Windows.Forms.TextBox();
             this.linkNameLabel = new System.Windows.Forms.Label();
             this.linkTypeBox = new System.Windows.Forms.ComboBox();
@@ -40,6 +39,7 @@ namespace Database_Manager
             this.linkUrlBox = new System.Windows.Forms.TextBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
+            this.errorMessage = new System.Windows.Forms.Label();
             this.linkGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,16 +64,6 @@ namespace Database_Manager
             this.linkGroupBox.TabIndex = 0;
             this.linkGroupBox.TabStop = false;
             this.linkGroupBox.Text = "Add Link";
-            // 
-            // errorMessage
-            // 
-            this.errorMessage.AutoSize = true;
-            this.errorMessage.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorMessage.Location = new System.Drawing.Point(207, 298);
-            this.errorMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.errorMessage.Name = "errorMessage";
-            this.errorMessage.Size = new System.Drawing.Size(0, 25);
-            this.errorMessage.TabIndex = 45;
             // 
             // linkNameBox
             // 
@@ -158,6 +148,7 @@ namespace Database_Manager
             this.cancelButton.TabIndex = 54;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // addButton
             // 
@@ -172,6 +163,17 @@ namespace Database_Manager
             this.addButton.TabIndex = 53;
             this.addButton.Text = "Add Link";
             this.addButton.UseVisualStyleBackColor = false;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // errorMessage
+            // 
+            this.errorMessage.AutoSize = true;
+            this.errorMessage.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorMessage.Location = new System.Drawing.Point(207, 298);
+            this.errorMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.errorMessage.Name = "errorMessage";
+            this.errorMessage.Size = new System.Drawing.Size(0, 25);
+            this.errorMessage.TabIndex = 45;
             // 
             // AddLink
             // 
